@@ -1,0 +1,41 @@
+{
+  "name": "express-admin",
+  "version": "0.2.2",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",    
+    "canvas": "^1.6.9",
+    "connect-redis": "^3.3.0",
+    "cookie-parser": "~1.4.3",
+    "ejs": "^2.5.7",
+    "express": "~4.16.4",
+    "express-session": "^1.15.4",
+    "ioredis": "^3.1.2",
+    "lodash": "^4.17.14",
+    "log4js": "^2.3.1",
+    "moment": "^2.22.2",
+    "mysql": "^2.14.0",
+    "serve-favicon": "^2.5.0",
+    "uuid": "^3.2.1"
+  },
+  "description": "```\r 一个基于NodeJS Express Bootstrap 框架的后台管理系统，包括登录，角色，菜单权限等。\r redis: v3.0+, \r nodejs: v8.0+\r ```\r # 下载地址\r https://github.com/wangbinlml/express-admin",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wangbinlml/express-admin.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wangbinlml/express-admin/issues"
+  },
+  "homepage": "https://github.com/wangbinlml/express-admin#readme"
+}

@@ -1,0 +1,40 @@
+clone:
+  git:
+    image: drone/drone:1.0
+
+pipeline:
+  build:
+    image: drone/drone:1.0
+    volumes:
+      - /cache/yarn/v8.11.1:/user/local/share/.cache/yarn/v1
+    commands:
+      - yarn config set registry http://registry.cnpmjs.org
+      - yarn config set @cig:registry https://r.ispacesys.cn
+      - yarn config list
+      - yarn install --production
+
+  docker-test:
+    image: registry.ispacesys.cn/devops/docker:1.0
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock    
+    base: registry.ispacesys.cn/pm2/iconv:8.9.2-centos
+    repo: cig/huzhou-rest
+    when:
+      branch: [master]
+
+  deploy-test:
+    image: registry.ispacesys.cn/devops/kubernetes:1.0
+    namespace: huzhou-test
+    deployment: zhzlbackend
+    container: rest
+    registry: registry.ispacesys.cn
+    secrets:
+      - source: kubernetes_server_test
+        target: kubernetes_server    
+      - source: kubernetes_cert_test 
+        target: kubernetes_cert    
+      - source: kubernetes_token_test
+        target: kubernetes_token  
+    when:
+      branch: [master]
+      
