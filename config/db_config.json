@@ -1,6 +1,6 @@
 {
   "mysql": {
-    "host": "127.0.0.1",
+    "host": "192.168.80.89",
     "user": "root",
     "password": "root",
     "database": "auth",
@@ -13,7 +13,7 @@
   "mongodb": {
     "db_type": "mongodb",
     "db_host": [
-      "192.168.1.6:27017"
+      "192.168.80.89:27017"
     ],
     "db_name": "demo",
     "db_replica_set": ""
@@ -23,7 +23,7 @@
     "connect_info": [
       {
         "port": 6379,
-        "host": "127.0.0.1"
+        "host": "192.168.80.89"
       }
     ]
   }

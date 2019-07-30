@@ -6,6 +6,18 @@ nodejs: v8.0+
 ```
 # 下载地址
 https://github.com/wangbinlml/express-admin
+用来测试Docker部署，
+1、在工程目录下添加Dockerfile；
+2、cd到工程目录，docker build -t express-admin .  将工程制作成docker镜像，命名为express-admin；
+3、使用docker images命令可以看到制作成功的镜像；
+4、使用docker run -p 2999:3000 express-admin 命令启动镜像；
+5、通过http://localhost:2999访问。
+
+
+进阶-->使用drone部署
+
+
+
 
 # Demo地址
 
@@ -65,22 +77,3 @@ db/change.sql
 - [x] 权限设置加入ztree
 - [x] 菜单以tab方式打开，可以同时展示多个页面
 - [ ] 操作权限管理
-
-# 界面预览
-
-1.登录
---
-![image](public/images/login.png)
-
-1.首页
---
-![image](public/images/welcome.png)
-
-3.菜单管理
---
-![image](public/images/menu.png)
-
-4.权限设置
---
-![image](public/images/menu_auth.png)
-

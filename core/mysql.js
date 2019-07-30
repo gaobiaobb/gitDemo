@@ -52,13 +52,17 @@ module.exports.query = (sql, values, cb) => {
                     connection.release();
                     reject(err);
                 } else {
-                    connection.query(sql, values, (error, rows) => {                        
-                        connection.release();
-                        if (error)
-                            reject(error);
-                        else
-                            resolve(rows);
-                    });
+                    try{
+                        connection.query(sql, values, (error, rows) => {                        
+                            connection.release();
+                            if (error)
+                                reject(error);
+                            else
+                                resolve(rows);
+                        });
+                    } catch (ex){
+                        console.log("执行SQL出错。" + ex);
+                    }
                 }
             });
         });

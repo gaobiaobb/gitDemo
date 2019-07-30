@@ -5,7 +5,7 @@ var router = express.Router();
 router.get('/', async function (req, res, next) {
     // var data = VerifyCode.Generate(4,80,33,'normal 30px Arial');
     // req.session.verify_code = data.code;
-    res.end(data.buffer);
+    res.end('');
 });
 
 module.exports = router;
