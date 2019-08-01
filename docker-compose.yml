@@ -1,0 +1,41 @@
+version: '2'
+
+services:
+  drone-server:
+    image: drone/drone:1.0.0-rc.5
+
+    ports:
+      - 1080:80
+      - 9000
+    volumes:
+      - d:/software/drone/volumes/drone:/var/lib/drone/
+      - d:/software/drone/docker.sock:/var/run/docker.sock
+      - d:/software/drone/data:/data
+    
+    environment:
+      - DRONE_OPEN=true
+      - DRONE_HOST=http://192.168.80.89
+      - DRONE_GITHUB_SERVER=https://github.com
+      - DRONE_GITHUB_CLIENT_ID=3107009838a4d0e3c15e
+      - DRONE_GITHUB_SKIP_VERIFY=false
+      - DRONE_GITHUB_CLIENT_SECRET=6607153d44f3010b551ecfb63337be48427e08e7
+      - DRONE_SECRET=123456
+      - DRONE_RUNNER_CAPACITY=2 \
+      - DRONE_ADMIN=gaobiaobb
+      - DRONE_SERVER_HOST=http://192.168.80.89:980
+      - DRONE_SERVER_PROTO=http
+      - DRONE_CODING_GIT_USERNAME=563024504@qq.com
+      - DRONE_CODING_GIT_PASSWORD=gaobiao@123
+
+  drone-agent:
+    image: drone/agent:latest
+
+    command: agent
+    depends_on:
+      - drone-server
+    volumes:
+      - d:/software/drone/docker.sock:/var/run/docker.sock
+    environment:
+      - DRONE_SERVER=drone-server:9000
+      - DRONE_SECRET=123456
+      - DRONE_MAX_PROCS=5
